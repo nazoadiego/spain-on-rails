@@ -8,12 +8,16 @@
     = csp_meta_tag
     = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = stylesheet_link_tag "https://cdn.jsdelivr.net/npm/daisyui@2.51.5/dist/full.css", type: "text/css"
+
     = javascript_importmap_tags
     = hotwire_livereload_tags if Rails.env.development?
   %body
     %main.container.mx-auto.mt-28.px-5.flex
       = yield
-      .notice
-        = notice
-      .alert
-        = alert
+      - if notice
+        .notice
+          = notice
+      - if alert
+        .alert
+          = alert
