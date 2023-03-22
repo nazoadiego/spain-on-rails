@@ -1,0 +1,14 @@
+%div{:id => "#{dom_id company}"}
+  %p.my-5
+    %strong.block.font-medium.mb-1 Name:
+    = company.name
+  %p.my-5
+    %strong.block.font-medium.mb-1 Url:
+    = company.url
+  %p.my-5
+    %strong.block.font-medium.mb-1 Location:
+    = company.location
+  - if action_name != "show"
+    = link_to "Show this company", company, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
+    = link_to 'Edit this company', edit_company_path(company), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium"
+    %hr.mt-6/
