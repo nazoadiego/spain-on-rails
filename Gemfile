@@ -79,3 +79,5 @@ gem "hotwire-livereload", "~> 1.2", :group => :development
 gem "haml-rails", "~> 2.0"
 
 gem "html2haml", "~> 2.3"
+
+gem "devise", "~> 4.9"
