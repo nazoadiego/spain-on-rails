@@ -81,3 +81,5 @@ gem "haml-rails", "~> 2.0"
 gem "html2haml", "~> 2.3"
 
 gem "devise", "~> 4.9"
+
+gem "view_component", "~> 2.82"

@@ -13,11 +13,14 @@
     = javascript_importmap_tags
     = hotwire_livereload_tags if Rails.env.development?
   %body
+    %header
+      = render(NavbarComponent.new(user: current_user))
     %main.container.mx-auto.mt-28.px-5.flex
       = yield
-      - if notice
-        .notice
-          = notice
-      - if alert
-        .alert
-          = alert
+    - if notice
+      .notice
+        = notice
+    - if alert
+      .alert
+        = alert
+    %footer
