@@ -1,0 +1,31 @@
+:ruby
+  new_user = User.new
+
+%input#sign-up-modal.modal-toggle{:type => "checkbox"}/
+%label.modal.cursor-pointer{:for => "sign-up-modal"}
+  %label.modal-box.relative{:for => ""}
+    %h2 Sign up
+    = form_for(new_user, as: :user, url: registration_path(:user)) do |f|
+      = render "users/shared/error_messages", resource: new_user
+      .field
+        = f.label :email
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .field
+        = f.label :password
+        - if @minimum_password_length
+          %em
+            (#{@minimum_password_length} characters minimum)
+        %br/
+        = f.password_field :password, autocomplete: "new-password"
+      .field
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password"
+      .actions
+        = f.submit "Sign up", class: 'btn btn-primary'
+      %ul
+        %li
+          = link_to("Log in", new_session_path(:user))
+        %li
+          = link_to("Forgot your password?", new_password_path(:user))

@@ -2,9 +2,11 @@
   .flex-1
     = link_to('Spain On Rails', root_path, class: "btn btn-ghost normal-case text-xl")
 
-  .flex-none.gap-2
+  .flex-none
+    - # Search Bar
     .form-control
       %input.input.input-bordered{:placeholder => "Search", :type => "text"}
+    - # Signed in actions
     - if signed_in?
       .dropdown.dropdown-end
         %label.btn.btn-ghost.btn-circle.avatar{:tabindex => "0"}
@@ -22,8 +24,11 @@
           %li
             = link_to("logout", destroy_user_session_path, data: { "turbo-method": :delete } )
     - else
-      %ul
+      - # Logged out actions
+      %ul.flex
         %li
-          = link_to('Login', new_user_session_path)
+          %label.btn{:for => "login-modal"}
+            Login
         %li
-          = link_to('Sign Up', new_user_registration_path)
+          %label.btn.btn-error{:for => "sign-up-modal"}
+            Sign Up

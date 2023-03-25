@@ -1,5 +1,5 @@
 class CompaniesController < ApplicationController
-  before_action :set_company, only: %i[ show edit update destroy ]
+  before_action :set_company, only: %i[show edit update destroy]
 
   # GET /companies or /companies.json
   def index
@@ -17,6 +17,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
+    @provinces = Company::VALID_LOCATIONS
   end
 
   # POST /companies or /companies.json
