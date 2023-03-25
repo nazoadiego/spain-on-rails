@@ -3,21 +3,21 @@
 
 %input#login-modal.modal-toggle{:type => "checkbox"}/
 %label.modal.cursor-pointer{:for => "login-modal"}
-  %label.modal-box.relative{:for => ""}
-    %h2 Log in
-    = form_for(:user, url: session_path(:user)) do |f|
+  %label.modal-box.relative.relative.flex.flex-col.gap-3.items-center{:for => ""}
+    %h2.text-2xl Log in
+    = form_for(:user, url: session_path(:user), html: { class: 'flex flex-col space-y-2' }) do |f|
       .field
         = f.label :email
         %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email"
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'input input-bordered w-full max-w-xs'
       .field
         = f.label :password
         %br/
-        = f.password_field :password, autocomplete: "current-password"
+        = f.password_field :password, autocomplete: "current-password", class: 'input input-bordered w-full max-w-xs'
       - if Devise.mappings[:user].rememberable?
         .field
-          = f.check_box :remember_me
-          = f.label :remember_me
+          = f.check_box :remember_me, class: 'checkbox'
+          = f.label :remember_me, class: 'label-text'
       .actions
         = f.submit "Log in", class: 'btn btn-primary'
       %ul

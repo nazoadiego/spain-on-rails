@@ -83,3 +83,7 @@ gem "html2haml", "~> 2.3"
 gem "devise", "~> 4.9"
 
 gem "view_component", "~> 2.82"
+
+gem "administrate", "~> 0.18.0"
+
+gem "pundit", "~> 2.3"

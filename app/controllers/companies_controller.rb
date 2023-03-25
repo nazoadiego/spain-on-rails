@@ -3,16 +3,18 @@ class CompaniesController < ApplicationController
 
   # GET /companies or /companies.json
   def index
-    @companies = Company.all
+    @companies = policy_scope(Company)
   end
 
   # GET /companies/1 or /companies/1.json
   def show
+    authorize @company
   end
 
   # GET /companies/new
   def new
     @company = Company.new
+    authorize @company
   end
 
   # GET /companies/1/edit
@@ -22,6 +24,7 @@ class CompaniesController < ApplicationController
   # POST /companies or /companies.json
   def create
     @company = Company.new(company_params)
+    authorize @companies
 
     respond_to do |format|
       if @company.save
