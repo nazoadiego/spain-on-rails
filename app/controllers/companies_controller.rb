@@ -17,7 +17,6 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
-    @provinces = Company::VALID_LOCATIONS
   end
 
   # POST /companies or /companies.json

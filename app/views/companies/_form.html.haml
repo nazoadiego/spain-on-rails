@@ -14,12 +14,6 @@
     = form.label :url
     = form.text_field :url, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
   .my-5
-    %select.select.select-bordered.w-full.max-w-xs
-      %option{:disabled => "disabled", :selected => "selected"} Location
-      - @provinces.each do |province|
-        %option
-          = province
-    = #form.label :location
-    = #form.text_field :location, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+    = form.select :location, options_for_select(Company::VALID_LOCATIONS, company.location), { include_blank: "Selecciona una provincia" }, { class: 'select select-bordered w-full max-w-xs select select-bordered w-full max-w-xs'}
   .inline
     = form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"
