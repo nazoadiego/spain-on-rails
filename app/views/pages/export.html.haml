@@ -1,0 +1,10 @@
+.flex.justify-center
+  %div
+    %h2.text-6xl
+      Export Ruby Companies
+    %p
+      This list of #{@number_of_companies} companies was a collaborative effort to help out rails developers. Specially, juniors. I believe we should do all that is in our hands to help each other out, specially given how niche Ruby On Rails is in Spain.
+    %p
+      I would hate for this info to go to waste, not to mention the info is scarce and a pain in the ass to collect. Please feel encourage to keep it as it is yours, share it and help your fellow rubyist.
+    = link_to('See you in another life brotha!', 'https://www.youtube.com/watch?v=zPt5OmNmgi0', class: 'link')
+    = link_to('Download CSV', pages_export_companies_path(format: :csv), class: 'btn btn-primary')

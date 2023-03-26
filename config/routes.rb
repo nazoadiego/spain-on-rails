@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users
   get 'pages/home'
+  get 'pages/export'
+  get 'pages/export/companies', to: 'pages#csv'
   resources :companies
 
   namespace :admin do

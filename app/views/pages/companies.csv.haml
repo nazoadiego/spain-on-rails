@@ -1,0 +1,3 @@
+= CSV.generate_line(['Name', 'Url', 'Location'], row_sep: nil)
+- @companies.each do |company|
+  = CSV.generate_line([company.name, company.url, company.location], row_sep: nil)
