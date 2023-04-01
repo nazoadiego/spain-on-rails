@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get 'pages/home'
   get 'pages/export'
   get 'pages/export/companies', to: 'pages#csv'
-  resources :companies
+  resources :companies do
+    resources :comments
+  end
 
   namespace :admin do
     resources :users

@@ -1,4 +1,4 @@
-.mx-auto.w-full.flex{:class => "md:w-2/3"}
+.mx-auto.flex.flex-row{:class => "md:w-2/3"}
   .mx-auto
     - if notice.present?
       %p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block= notice
@@ -7,3 +7,17 @@
     .inline-block.ml-2
       = button_to 'Destroy this company', company_path(@company), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium"
     = link_to 'Back to companies', companies_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
+    - if @company.has_comments?
+      %h3
+        #{@company.comments_count} Comments
+      - @comments.each do |comment|
+        %h4
+          = comment.title
+        %p
+          = comment.message
+        %h5
+          Comment by #{comment.user.email}
+    - else
+      %h3
+        Comments
+      %h4="No comments yet :( Be the first one"
