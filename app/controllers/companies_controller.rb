@@ -9,6 +9,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1 or /companies/1.json
   def show
     @comments = @company.comments.includes([:user])
+    @comment = @company.comments.build
 
     authorize @company
   end

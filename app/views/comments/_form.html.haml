@@ -1,0 +1,21 @@
+:ruby
+  comment = local_assigns[:comment]
+  company = local_assigns[:company]
+
+= form_with(model: [company, comment], class: "contents", url: company_path(company) ) do |form|
+  - if comment.errors.any?
+    #error_explanation.bg-red-50.text-red-500.px-3.py-2.font-medium.rounded-lg.mt-3
+      %h2
+        = pluralize(comment.errors.count, "error")
+        prohibited this comment from being saved:
+      %ul
+        - comment.errors.each do |error|
+          %li= error.full_message
+  .my-5
+    = form.label :title
+    = form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .my-5
+    = form.label :message
+    = form.text_field :message, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"
+  .inline
+    = form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer"

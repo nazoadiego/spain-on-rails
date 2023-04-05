@@ -1,10 +1,19 @@
 class CommentsController < ApplicationController
   before_action :set_company, only: %i[create destroy]
 
+  def index
+    policy_scope(Comment)
+
+    redirect_to @company
+  end
+
+
   def create
     @comment = @company.comments.new(comment_params) do |comment|
       comment.user = current_user
     end
+
+    authorize @comment
 
     if @comment.save
       redirect_to @company,  status: :created, notice: "Comment was successfully created."
@@ -19,7 +28,7 @@ class CommentsController < ApplicationController
     redirect_to @company, notice: "Comment was successfully destroyed."
   end
 
-  def set_idea
+  def set_company
     @company = Company.find(params[:company_id])
   end
 

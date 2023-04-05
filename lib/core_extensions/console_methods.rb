@@ -7,5 +7,13 @@ module CoreExtensions
     def create(...)
       FactoryBot.create(...)
     end
+
+    def build(...)
+      FactoryBot.build(...)
+    end
+
+    def build_stubbed(...)
+      FactoryBot.build_stubbed(...)
+    end
   end
 end
