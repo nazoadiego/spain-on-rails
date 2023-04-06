@@ -1,0 +1,6 @@
+- if destroy_action
+  = button_to(url, class: btn_class, method: :delete) do
+    = content
+- else
+  = link_to(url, class: btn_class) do
+    = content

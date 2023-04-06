@@ -4,10 +4,13 @@
       %p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block= notice
     = render @company
     - if current_user&.admin?
-      = link_to 'Edit this company', edit_company_path(@company), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
+      = render(ButtonComponent.new(type: :accent, url: edit_company_path(@company))) do
+        = 'Edit this company'
       .inline-block.ml-2
-        = button_to 'Destroy this company', company_path(@company), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium"
-    = link_to 'Back to companies', companies_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
+        = render(ButtonComponent.new(type: :error, url: company_path(@company), method: :delete)) do
+          = 'Destroy this company'
+    = render(ButtonComponent.new(type: :ghost, url: companies_path)) do
+      = 'Back to companies'
     - if @company.has_comments?
       %h3.mt-8.text-2xl
         #{@company.comments_count} Comments
