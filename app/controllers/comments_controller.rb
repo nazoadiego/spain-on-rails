@@ -15,6 +15,12 @@ class CommentsController < ApplicationController
 
     authorize @comment
 
+    if current_user.nil?
+      flash[:notice] = 'You need to sign in to comment!'
+      redirect_to @company and return
+    end
+
+
     if @comment.save
       redirect_to @company,  status: :created, notice: "Comment was successfully created."
     else

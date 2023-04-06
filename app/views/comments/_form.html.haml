@@ -2,7 +2,7 @@
   comment = local_assigns[:comment]
   company = local_assigns[:company]
 
-= form_with(model: [company, comment], class: "contents", url: company_path(company) ) do |form|
+= form_with(model: [company, comment], class: "contents") do |form|
   - if comment.errors.any?
     #error_explanation.bg-red-50.text-red-500.px-3.py-2.font-medium.rounded-lg.mt-3
       %h2
