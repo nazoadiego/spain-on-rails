@@ -1,12 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :set_company, only: %i[create destroy]
+  before_action :set_company, only: %i[index create destroy]
+  before_action :skip_policy_scope, only: :index
 
   def index
-    policy_scope(Comment)
-
     redirect_to @company
   end
-
 
   def create
     @comment = @company.comments.new(comment_params) do |comment|
@@ -19,7 +17,6 @@ class CommentsController < ApplicationController
       flash[:notice] = 'You need to sign in to comment!'
       redirect_to @company and return
     end
-
 
     if @comment.save
       redirect_to @company,  status: :created, notice: "Comment was successfully created."

@@ -8,15 +8,16 @@
       = button_to 'Destroy this company', company_path(@company), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium"
     = link_to 'Back to companies', companies_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium"
     - if @company.has_comments?
-      %h3
+      %h3.mt-8.text-2xl
         #{@company.comments_count} Comments
       - @comments.each do |comment|
-        %h4
-          = comment.title
-        %p
-          = comment.message
-        %h5
-          Comment by #{comment.user.email}
+        .flex.flex-col.py-2
+          %h4.text-2xl
+            = comment.title
+          %h5
+            = comment.user.email
+          %p
+            = comment.message
     - else
       %h3
         Comments
