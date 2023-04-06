@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
   before_action :set_company, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[edit]
+
 
   # GET /companies or /companies.json
   def index
@@ -22,6 +24,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1/edit
   def edit
+    authorize @company
   end
 
   # POST /companies or /companies.json
@@ -42,6 +45,8 @@ class CompaniesController < ApplicationController
 
   # PATCH/PUT /companies/1 or /companies/1.json
   def update
+    authorize @company
+
     respond_to do |format|
       if @company.update(company_params)
         format.html { redirect_to company_url(@company), notice: "Company was successfully updated." }
@@ -55,6 +60,8 @@ class CompaniesController < ApplicationController
 
   # DELETE /companies/1 or /companies/1.json
   def destroy
+    authorize(@company)
+
     @company.destroy
 
     respond_to do |format|
