@@ -1,5 +1,4 @@
 name: Continuous integration
-
 on:
   push:
     branches: [master]
@@ -9,7 +8,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-
     services:
       postgres:
         image: postgres:11
@@ -22,15 +20,15 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1.146.0
         with:
-          ruby-version: 2.7.4
-      - name: Build and run test
+          ruby-version: "2.7.4"
+          bundler-cache: true
+      - name: Build
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
-          RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         run: |
@@ -39,4 +37,11 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rails db:create
           bundle exec rails db:migrate
+      - name: Run tests
+        env:
+          DATABASE_URL: postgres://postgres:@localhost:5432/test
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        run: |
           RAILS_ENV=test bundle exec rake
