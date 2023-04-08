@@ -37,5 +37,5 @@ jobs:
           bundle install --jobs 4 --retry 3
           bundle exec rails db:create
           bundle exec rails db:migrate
-        - name: Run tests
-          RAILS_ENV=test bundle exec rake
+      - name: Run tests
+        RAILS_ENV=test bundle exec rake
