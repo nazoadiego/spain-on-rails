@@ -38,4 +38,5 @@ jobs:
           bundle exec rails db:create
           bundle exec rails db:migrate
       - name: Run tests
-        RAILS_ENV=test bundle exec rake
+        run: |
+          RAILS_ENV=test bundle exec rake
