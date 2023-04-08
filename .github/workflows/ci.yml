@@ -25,10 +25,10 @@ jobs:
         uses: ruby/setup-ruby@v1.146.0
         with:
           ruby-version: "2.7.4"
+          bundler-cache: true
       - name: Build
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
-          RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         run: |
