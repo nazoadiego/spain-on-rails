@@ -15,11 +15,9 @@ class Company < ApplicationRecord
 
   private
 
-  # Move this to a separate helper file.
-
   def valid_url?
-    is_a_match = URI::DEFAULT_PARSER.make_regexp(%w[http https]).match?(self.url)
+    return true if UrlValidator.new(url: url).valid?
 
-    self.errors.add(:url, "#{url} is not a valid url!") unless is_a_match
+    self.errors.add(:url, "#{url} is not a valid url!")
   end
 end
