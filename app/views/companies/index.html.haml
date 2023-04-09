@@ -4,5 +4,6 @@
   .flex.justify-between.items-center
     %h1.font-bold.text-4xl Companies
     = link_to('Export List', pages_export_path, class: 'btn')
-  #companies.min-w-full
+  .grid.grid-cols-3.gap-4
     = render @companies
+  = paginate @companies

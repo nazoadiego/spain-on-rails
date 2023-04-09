@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-10.times do |count|
+40.times do |count|
   company_attrs = {
     name: "company-#{count}",
     url: 'https://marsbased.com/',

@@ -5,7 +5,7 @@ class CompaniesController < ApplicationController
 
   # GET /companies or /companies.json
   def index
-    @companies = policy_scope(Company)
+    @companies = policy_scope(Company).page(params[:page]).per(9)
   end
 
   # GET /companies/1 or /companies/1.json
