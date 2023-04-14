@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
     # TODO: Time to turn it into a UseCase is coming
     scope = policy_scope(Company)
     scope = scope.by_province(params[:province]) if params[:province].present?
-    @companies= scope.page(params[:page]).per(9)
+    @companies = scope.page(params[:page]).per(9)
   end
 
   # GET /companies/1 or /companies/1.json
