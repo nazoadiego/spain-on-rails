@@ -3,7 +3,9 @@
     %p#notice.py-2.px-3.bg-green-50.mb-5.text-green-500.font-medium.rounded-lg.inline-block= notice
   .flex.justify-between.items-center
     %h1.font-bold.text-4xl Companies
-    = link_to('Export List', pages_export_path, class: 'btn')
+    .flex.gap-4
+      = render(DropdownFilterComponent.new(options: @locations, selected_option: params[:province], placeholder: 'Filter by Province'))
+      = link_to('Export List', pages_export_path, class: 'btn')
   .grid.grid-cols-3.gap-4
     = render @companies
   = paginate @companies
