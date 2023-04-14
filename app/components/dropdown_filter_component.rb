@@ -11,13 +11,6 @@ class DropdownFilterComponent < ViewComponent::Base
     @selected_option.nil?
   end
 
-<<<<<<< HEAD
-=======
-  def display_options
-    @options.map { |option| { value: option.underscore, display: option }}
-  end
-
->>>>>>> a6e8cba670900eebc6e5587b112e30720b2cc913
   def selected_option?(option)
     @selected_option == option.underscore
   end
