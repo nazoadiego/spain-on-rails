@@ -12,19 +12,10 @@ class DropdownFilterComponent < ViewComponent::Base
   end
 
   def display_options
-    @options.map { |option| { value: snakecase(option), display: option }}
+    @options.map { |option| { value: option.underscore, display: option }}
   end
 
   def selected_option?(option)
-    @selected_option == option[:value]
-  end
-
-  def snakecase(string)
-    string.gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
-          .gsub(/([a-z\d])([A-Z])/,'\1_\2')
-          .tr('-', '_')
-          .gsub(/\s/, '_')
-          .gsub(/__+/, '_')
-          .downcase
+    @selected_option == option.underscore
   end
 end
