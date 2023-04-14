@@ -1,6 +1,6 @@
 %select.select.select-info.bordered.w-full.max-w-xs{ data: { controller: 'dropdown', dropdown_target: 'menu', action: 'change->dropdown#select' }}
   %option{ disabled: "disabled",  selected: no_filter? ? 'selected' : nil }
     = @placeholder
-    - display_options.each do |option|
-      %option{ value: option[:value], selected: selected_option?(option) ? 'selected' : nil }
-        = option[:display]
+    - @options.each do |option|
+      %option{ value: option.underscore, selected: selected_option?(option) ? 'selected' : nil }
+        = option
