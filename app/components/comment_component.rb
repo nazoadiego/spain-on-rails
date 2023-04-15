@@ -17,4 +17,12 @@ class CommentComponent < ViewComponent::Base
   def message
     @comment.message
   end
+
+  def edit?
+    Pundit.policy(@current_user, Comment).edit?
+  end
+
+  def delete?
+    Pundit.policy(@current_user, Comment).destroy?
+  end
 end

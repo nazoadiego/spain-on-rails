@@ -36,6 +36,14 @@ class ApplicationPolicy
     false
   end
 
+  private
+
+  def user_is_the_owner_or_admin?
+    return false if user.nil?
+
+    user.admin || record.user == user
+  end
+
   class Scope
     def initialize(user, scope)
       @user = user
