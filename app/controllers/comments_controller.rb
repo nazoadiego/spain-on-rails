@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_company, only: %i[index create destroy]
+  before_action :set_comment, only: %i[destroy]
   before_action :skip_policy_scope, only: :index
 
   def index
@@ -26,9 +27,15 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    authorize @comment
+
     @comment.destroy
 
     redirect_to @company, notice: "Comment was successfully destroyed."
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 
   def set_company

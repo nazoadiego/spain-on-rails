@@ -1,0 +1,16 @@
+.flex.flex-col.py-2
+  .flex.justify-between
+    %div
+      %h4.text-2xl
+        = title
+      %h5
+        by #{author}
+    - if true
+      %div
+        = render(ButtonComponent.new(type: :ghost, url: companies_path)) do
+          = 'Edit'
+        = render(ButtonComponent.new(type: :error, url: company_comment_path(@comment.company, @comment), method: :delete)) do
+          = 'Delete'
+  %div
+    %p
+      = message
