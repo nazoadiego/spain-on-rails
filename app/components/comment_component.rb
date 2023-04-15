@@ -18,6 +18,18 @@ class CommentComponent < ViewComponent::Base
     @comment.message
   end
 
+  def replies
+    @comment.replies
+  end
+
+  def show_reply_button?
+    !@comment.is_a_reply?
+  end
+
+  def show_replies?
+    @comment.has_replies?
+  end
+
   def edit?
     Pundit.policy(@current_user, Comment).edit?
   end

@@ -6,7 +6,7 @@
       %h5
         by #{author}
     - if edit? && delete?
-      %div
+      .flex
         = render(ButtonComponent.new(type: :ghost, url: companies_path)) do
           = 'Edit'
         = render(ButtonComponent.new(type: :error, url: company_comment_path(@comment.company, @comment), method: :delete)) do
@@ -14,3 +14,9 @@
   %div
     %p
       = message
+    - if show_reply_button?
+      = render(ButtonComponent.new(type: :ghost, url: companies_path)) do
+        = 'Reply'
+- if show_replies?
+  .ml-2
+    = render(CommentComponent.with_collection(replies, current_user: @current_user))
