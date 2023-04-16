@@ -1,0 +1,4 @@
+:ruby
+  frame_id = dom_id(@comment, 'edit_frame')
+
+= render partial: "comments/form", locals: { comment: @comment, company: @company, frame_id: frame_id }

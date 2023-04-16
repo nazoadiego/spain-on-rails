@@ -17,12 +17,7 @@
       = render(NavbarComponent.new(user: current_user))
     %main.container.mx-auto.mt-28.px-5.flex
       = yield
-    - if notice
-      .notice
-        = notice
-    - if alert
-      .alert
-        = alert
+    = render('layouts/flashes')
     %footer
   = render('shared/sign_up_modal')
   = render('shared/login_modal')

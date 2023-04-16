@@ -30,6 +30,10 @@ class CommentComponent < ViewComponent::Base
     @comment.has_replies?
   end
 
+  def edit_frame_id
+    dom_id(@comment, 'edit_frame')
+  end
+
   def edit?
     Pundit.policy(@current_user, Comment).edit?
   end

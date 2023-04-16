@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_company, only: %i[index create destroy]
-  before_action :set_comment, only: %i[destroy]
+  before_action :set_company, only: %i[index edit create destroy]
+  before_action :set_comment, only: %i[edit update destroy]
   before_action :skip_policy_scope, only: :index
 
   def index
@@ -26,6 +26,23 @@ class CommentsController < ApplicationController
     end
   end
 
+  def edit
+    authorize @comment
+  end
+
+  def update
+    authorize @comment
+
+    if @comment.update(comment_params)
+      respond_to do |format|
+        format.html { redirect_to company_url(@comment.company), notice: "Comment was successfully updated." }
+        format.turbo_stream { flash.now[:notice] = "Comment was successfully updated." }
+      end
+    else
+      redirect_to company_url(@comment.company), status: :unprocessable_entity
+    end
+  end
+
   def destroy
     authorize @comment
 
@@ -43,6 +60,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:title, :message)
+    params.require(:comment).permit(:title, :message, :parent_id)
   end
 end

@@ -8,6 +8,8 @@ class Comment < ApplicationRecord
   validates :title, presence: true
 
   scope :with_author, -> { includes([:user]) }
+  scope :with_replies, -> { includes([:replies]) }
+  scope :parents, -> { where(parent: nil) }
 
   def has_replies?
     replies.any?

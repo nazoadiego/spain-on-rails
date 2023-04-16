@@ -13,7 +13,9 @@ class CompaniesController < ApplicationController
 
   # GET /companies/1 or /companies/1.json
   def show
-    @comments = @company.comments.with_author.where(parent: nil)
+    parent_comments = @company.comments.parents
+    @comments = parent_comments.with_author.with_replies
+
     @comment = @company.comments.build
 
     authorize @company
