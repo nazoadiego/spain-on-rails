@@ -4,8 +4,18 @@ FactoryBot.define do
     url { Faker::Internet.url }
     location { 'Madrid' }
 
+    trait :with_comment do
+      after(:build) do |company|
+        comment = build(:comment, company: company)
+        company.comments << comment
+      end
+    end
+
     trait :with_comments do
-      association :comment, factory: :comment
+      after(:build) do |company|
+        comments = build_list(:comment, 3, company: company)
+        company.comments << comments
+      end
     end
   end
 
