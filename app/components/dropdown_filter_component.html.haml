@@ -1,4 +1,4 @@
-%select.select.select-info.bordered.w-full.max-w-xs{ data: { controller: 'dropdown', dropdown_target: 'menu', action: 'change->dropdown#select' }}
+%select.select.select-info.bordered.w-full.max-w-xs{ 'aria-label': aria_label, data: { controller: 'dropdown', dropdown_target: 'menu', action: 'change->dropdown#select' }}
   %option{ disabled: "disabled",  selected: no_filter? ? 'selected' : nil }
     = @placeholder
     - sanitized_options.each do |display, sanitized_value|

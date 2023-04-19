@@ -18,4 +18,8 @@ class DropdownFilterComponent < ViewComponent::Base
   def sanitized_options
     @options.to_h { |option| [option, option.downcase.gsub(' ', '_')] } 
   end
+
+  def aria_label
+    'Provinces'
+  end
 end
