@@ -5,11 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-40.times do |count|
-  company_attrs = {
-    name: "company-#{count}",
-    url: 'https://marsbased.com/',
-    location: 'Madrid'
-  }
-  Company.create(company_attrs)
+
+35.times do
+  create(:company, :with_comments)
 end
+
+15.times do 
+  create(:company)
+end
+
+# TODO: My god, remember to change this
+create(:user, :admin, email: 'admin@gmail.com', password: 'password123')
