@@ -12,6 +12,8 @@ Company.destroy_all
 User.destroy_all
 
 FactoryBot.create_list(:company, 15)
+FactoryBot.create_list(:company, 10, :with_comment)
+FactoryBot.create_list(:company, 10, :with_comments)
 
 # TODO: My god, remember to change this
 FactoryBot.create(:user, :admin, email: 'admin@gmail.com', password: 'password123')

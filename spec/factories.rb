@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :company do
     name { Faker::Company.name }
     url { Faker::Internet.url }
-    location { 'Madrid' }
+    location { Companies::ListCompaniesLocationsUseCase.random }
 
     trait :with_comment do
       after(:build) do |company|

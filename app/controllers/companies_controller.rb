@@ -80,7 +80,7 @@ class CompaniesController < ApplicationController
   end
 
   def set_locations
-    @locations = Company::VALID_LOCATIONS
+    @locations = Company::LOCATIONS
   end
 
   def company_params
