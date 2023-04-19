@@ -12,6 +12,10 @@ class DropdownFilterComponent < ViewComponent::Base
   end
 
   def selected_option?(option)
-    @selected_option == option.underscore
+    @selected_option == option
+  end
+
+  def sanitized_options
+    @options.to_h { |option| [option, option.downcase.gsub(' ', '_')] } 
   end
 end
