@@ -25,10 +25,6 @@ class CommentPolicy < ApplicationPolicy
 
   private
 
-  def user_is_the_owner_or_admin?
-    user.admin || record.user == user
-  end
-
   class Scope < Scope
     def resolve
       scope.all

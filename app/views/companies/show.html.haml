@@ -14,16 +14,9 @@
     - if @company.has_comments?
       %h3.mt-8.text-2xl
         #{@company.comments_count} Comments
-      - @comments.each do |comment|
-        .flex.flex-col.py-2
-          %h4.text-2xl
-            = comment.title
-          %h5
-            = comment.user.email
-          %p
-            = comment.message
+      = render(CommentComponent.with_collection(@comments, current_user: current_user))
     - else
       %h3
         Comments
-      %h4="No comments yet :( Be the first one"
+      %h4="No comments yet :( Be the first one!"
     = render partial: "comments/form", locals: { comment: @comment, company: @company }

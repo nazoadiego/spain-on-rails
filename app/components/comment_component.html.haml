@@ -1,0 +1,23 @@
+= tag.turbo_frame(id: edit_frame_id) do
+  .flex.flex-col.py-2
+    .flex.justify-between
+      %div
+        %h4.text-2xl
+          = title
+        %h5
+          by #{author}
+      - if edit? && delete?
+        .flex
+          = render(ButtonComponent.new(type: :ghost, url: edit_company_comment_path(@comment.company, @comment))) do
+            = 'Edit'
+          = render(ButtonComponent.new(type: :error, url: company_comment_path(@comment.company, @comment), method: :delete)) do
+            = 'Delete'
+    %div
+      %p
+        = message
+      - if show_reply_button?
+        = render(ButtonComponent.new(type: :ghost, url: companies_path)) do
+          = 'Reply'
+- if show_replies?
+  .ml-2
+    = render(CommentComponent.with_collection(replies, current_user: @current_user))

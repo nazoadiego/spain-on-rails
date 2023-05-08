@@ -1,0 +1,4 @@
+
+= turbo_stream.replace dom_id(@comment, 'edit_frame') do
+  = render(partial: "layouts/flashes")
+  = render(CommentComponent.new(comment: @comment, current_user: current_user))
